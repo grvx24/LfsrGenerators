@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="PZ_generatory.Quiz.UserControlQuestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory.Quiz"
+             mc:Ignorable="d" 
+             MinWidth="880"
+             Height="450" Width="auto" Background="White">
+
+
+
+    <Grid x:Name="MainPage" HorizontalAlignment="Center" MinWidth="880">
+        <StackPanel Orientation="Vertical">
+            <Grid HorizontalAlignment="Right" x:Name="TimerGrid" Width="80" Height="80" Margin="0,10,10,0">
+            </Grid>
+        </StackPanel>
+
+        <Label HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Margin="100,30,100,249" FontSize="25" Foreground="#FF224BB6" MinWidth="500">
+            <TextBlock x:Name="QuestionContent" TextAlignment="Left" TextWrapping="Wrap" >
+            </TextBlock>
+        </Label>
+        <Grid Margin="50,180,50,25" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="173*"/>
+                <RowDefinition Height="172*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button x:Name="ButtonAnswear_0" Margin="40,10"  Height="80" Grid.Column="0" Grid.Row="0" Click="ButtonAnswear_Click" >
+                <TextBlock x:Name="question1" TextWrapping="Wrap" >
+                </TextBlock>
+            </Button>
+            <Button x:Name="ButtonAnswear_1" Margin="40,10"  Height="80" Grid.Column="0" Grid.Row="1" Click="ButtonAnswear_Click">
+                <TextBlock x:Name="question2" TextWrapping="Wrap" TextAlignment="Center" >
+                </TextBlock>
+            </Button>
+            <Button x:Name="ButtonAnswear_2" Margin="40,10"  Height="80" Grid.Column="1" Grid.Row="0" Click="ButtonAnswear_Click">
+                <TextBlock x:Name="question3" TextWrapping="Wrap" TextAlignment="Center" >
+
+                </TextBlock>
+            </Button>
+            <Button x:Name="ButtonAnswear_3" Margin="40,10"  Height="80" Grid.Column="1" Grid.Row="1" Click="ButtonAnswear_Click">
+                <TextBlock x:Name="question4" TextWrapping="Wrap" TextAlignment="Center" >
+
+                </TextBlock>
+            </Button>
+        </Grid>
+
+    </Grid>
+</UserControl>

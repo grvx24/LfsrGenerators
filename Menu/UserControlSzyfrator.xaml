@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="PZ_generatory.UserControlSzyfrator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PZ_generatory"
+             mc:Ignorable="d" 
+             Height="550" Width="auto">
+    <Grid Background="White" HorizontalAlignment="Center" x:Name="UserChoice">
+        <Grid Margin="20,20,20,464">
+            <Label FontSize="35" Foreground="#FF224BB6" HorizontalContentAlignment="Center" >
+                Wybierz działanie
+            </Label>
+        </Grid>
+        <WrapPanel HorizontalAlignment="Left" x:Name="StackGrid" Margin="55,86,20,20">
+            <Button Height="100" Width="205" Margin="40,10,10,10" Click="Szyfrator_Click">
+                <TextBlock TextAlignment="Center"   Text="Szyfrowanie" TextWrapping="Wrap"/>
+            </Button>
+             <Button Height="100" Width="205" Margin="10,10,300,10" Click="Deszyfrator_Click">
+                <TextBlock TextAlignment="Center"  Text="Deszyfrowanie" TextWrapping="Wrap"/>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>

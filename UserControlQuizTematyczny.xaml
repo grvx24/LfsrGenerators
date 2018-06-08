@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="PZ_generatory.UserControlQuizTematyczny"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory"
+            mc:Ignorable="d" 
+             Height="540" Width="1020">
+    <Grid Background="White">
+        <ContentControl x:Name="ContentListGeneratory" Margin= "0,421,0,0" Visibility="Visible">
+            <Grid Background="#FF224BB6">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
+                    <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button x:Name="Generatory_liniowe" Width="190" Height="100" Background="#FF267BB6" Click="Generatory_liniowe_Click">
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="Generatoy liniowe" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="Szyfry_proste" Width="190" Height="100" Background="#FF267BB6" Click="Szyfry_proste_Click">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Szyfry proste" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="Testy_FIPS" Width="190" Height="100" Background="#FF267BB6" Click="Testy_FIPS_Click">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Testy FIPS" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="Funkcje_skrótu" Width="190" Height="100" Background="#FF267BB6" Click="Funkcje_skrótu_Click">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Funkcje skrótu" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="szyfratory" Width="190" Height="100" Background="#FF267BB6" Click="Szyfratory_Click">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Szyfratory" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </ContentControl>
+        <Grid x:Name="GridQuiz" HorizontalAlignment="Left" Height="412" Margin="4,4,0,0" VerticalAlignment="Top" Width="1012">
+            
+
+            
+        </Grid>
+
+    </Grid>
+</UserControl>

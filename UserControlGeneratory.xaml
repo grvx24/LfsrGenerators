@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="PZ_generatory.UserControlGeneratory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PZ_generatory"
+             mc:Ignorable="d" 
+             Height="550" Width="1020">
+    <Grid Background="White">
+        <ContentControl x:Name="ContentListGeneratory" Margin= "0,0,0,422" Visibility="Visible">
+            <Grid Background="#FF224BB6" Margin="0,0,0,10">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                    <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="120"/>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <!-- <ColumnDefinition Width="70"/> -->
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="220"/>
+                            <!-- <ColumnDefinition Width="70"/> -->
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Grid.Row="0" x:Name="Stop_and_go" Width="190" Height="100" Background="#FF267BB6" Click="Stop_and_go_Click" Margin="12,10,21,11">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator    stop-and-go" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="0" x:Name="Progowy" Width="190" Height="100"  Background="#FF267BB6" Click="Progowy_Click" Margin="21,10,20,11" >
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="Generator progowy" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="2" Grid.Row="0"  x:Name="Rueppela" Width="190" Height="100" Background="#FF267BB6" Click="Rueppela_Click" Margin="20,10,21,11">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator Rueppela" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="0"  x:Name="Rozrzedzający" Width="190" Height="100" Background="#FF267BB6" Click="Rozrzedzający_Click" Margin="21,10,19,11">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator rozrzedzający" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="0" Grid.Row="1"  x:Name="Geffego" Width="190" Height="100" Background="#FF267BB6" Click="Geffego_Click" Margin="12,11,21,10" >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator Geffego" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="1"  x:Name="Gollmana" Width="190" Height="100" Background="#FF267BB6" Click="Gollmana_Click" Margin="21,11,20,10">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Kaskada Gollmana" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="2" Grid.Row="1" x:Name="Obcinający_Copy" Width="190" Height="100" Background="#FF267BB6" Click="Obcinający_Click" Margin="20,11,21,10">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator obcinający" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="1"  x:Name="Obcinający" Width="190" Height="100" Background="#FF267BB6" Click="Obcinający_Click" Margin="21,11,19,10" >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator obcinający" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="0" Grid.Row="2" x:Name="Samoobcinający" Width="190" Height="100" Background="#FF267BB6" Click="Samoobcinający_Click" Margin="12,10,21,11" >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator samoobcinający" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="2" x:Name="Samoobcinający_Copy" Width="190" Height="100" Background="#FF267BB6" Click="Samoobcinający_Click" Margin="21,10,20,11" >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Generator samoobcinający" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </ContentControl>
+        <Grid x:Name="GridGeneratory" HorizontalAlignment="Left" Height="422" Margin="4,118,0,0" VerticalAlignment="Top" Width="1012">
+
+        </Grid>
+
+    </Grid>
+</UserControl>

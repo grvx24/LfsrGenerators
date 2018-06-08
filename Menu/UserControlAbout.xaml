@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="PZ_generatory.Menu.UserControlAbout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory"
+       mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Background="White">
+    <Grid x:Name="About">
+        <StackPanel HorizontalAlignment="Center" x:Name="StackGrid" >
+            <Label FontSize="35" Foreground="#FF224BB6" HorizontalContentAlignment="Center" Margin="0,10,0,0" >
+                O PROGRAMIE
+            </Label>
+            <Label Margin="60,10,60,0" FontSize="18" Foreground="#FF224BB6"  >
+                <TextBlock ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="WrapWithOverflow"><Run Text="&#x9;"/><Run Text="Aplikacja edukacyjna zawiera w sobie opis i implementację najpopularniejszych generatorów ciągów pseudolosowych. Główną koncepcją był"/><Run Text="o"/><Run Text=" "/><Run Text="zebranie wybranych generatorów w jednym miejscu dla łatwiejszego porównania zasad ich działania."/><LineBreak/><Run Text="Z lewej strony znajduje się rozwijane menu z możliwością wyboru jednego z czterech dostępnych modułów:"/><LineBreak/><Run Text="GENERATORY"/><LineBreak/><Run Text="&#x9;"/><Run Text="Zakładka zawiera zestaw generatorów. Po wybraniu generatora użytkownik ma dostęp do jego opisu oraz możliwość wygenerowania nim ciągu pseudolosowego"/><Run Text=". "/><LineBreak/><Run/><Run Text="SZYFRATOR"/><LineBreak/><Run Text=" "/><Run Text="&#x9;"/><Run Text="Po"/><Run Text=" wybraniu zakładki użytkownik musi wskazać typ działania jakie chce wykonać: szyfrowanie lub deszyfrowanie"/><Run Text=". "/><LineBreak/><Run/><Run Text="TESTY"/><LineBreak/><Run Text="&#x9;"/><Run Text="Aplikacja udostępnia zestaw testów FIPS-140 (pojedynczych bitów, serii, długiej serii oraz pokerowy), za pomocą których można sprawdzić losowość wygenerowanego ciągu."/><LineBreak/><Run Text="QUIZ"/><LineBreak/><Run Text="&#x9;"/><Run Text="Dla sprawdzenia swojej wiedzy z dziedziny kryptografii użytkownik może wykonać"/><Run Text=" quiz z wybranej przez siebie kategorii. "/><Run Text="Odpowiedzi do pytań s kategori Generatory ukryte są w niniejszej aplikacji. Czas odpowiedzi na pytanie jest ograniczony, zale"/><Run Text="ż"/><Run Text="y od trudności pytania."/><Run Text=" Możliwych jest kilka "/><Run Text="poprawnych "/><Run Text="odpowiedzi"/><Run Text=" (minimum jedna)."/></TextBlock>
+
+            </Label>
+            
+             
+        </StackPanel>
+    </Grid>
+</UserControl>

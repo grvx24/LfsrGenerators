@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="PZ_generatory.Quiz.StartQuiz"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory.Quiz"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Height="550" Width="auto" Background="White">
+
+    <UserControl.Resources>
+        <materialDesign:PackIcon x:Key="ArrowLeft" Kind="ArrowLeft" Foreground="White" Width="50" Height="50"/>
+    </UserControl.Resources>
+    
+    <StackPanel x:Name="MainPage" HorizontalAlignment="Center" >
+        <StackPanel x:Name="QuestionPlace" Height="465">
+            <Label FontSize="35" Foreground="#FF224BB6" HorizontalContentAlignment="Center" >
+                Zasady Quizu
+            </Label>
+            <Label Margin="100,30" FontSize="30" Foreground="#FF224BB6">
+                <TextBlock TextAlignment="Left" TextWrapping="Wrap">
+                    <Run Text="1. Każde pytanie ma określony czas na odpowiedź."/>
+                    <LineBreak/>
+                    <Run Text="2. Pytanie może mieć więcej niz jedną poprawną odpowiedź."/>
+                    <LineBreak/>
+                    <Run Text="3. Nie można "/>
+                    <Run Text="wrócić do poprzedniego pytania."/>
+                </TextBlock>
+            </Label>
+            <Label  x:Name="LabelCategoryChoice" Margin="100,0" FontSize="30" Foreground="#FF224BB6" HorizontalAlignment="Center">
+            </Label>
+            <Label x:Name="GoodLuck" FontSize="60" Foreground="Orange"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                Powodzenia !
+            </Label>
+        </StackPanel>
+        <Grid>
+            <StackPanel HorizontalAlignment="Left" Margin="50,0">
+                <Button x:Name="buttonBackToCAtegoryChoice" Height="70"  Click="buttonBackToCAtegoryChoice_Click">
+                    <DynamicResource ResourceKey="ArrowLeft"/>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="50,0" Orientation="Horizontal">
+                <Label  x:Name="HowManyQuestionLabel" Foreground="#FF224BB6" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    Liczba pytań z danej kategorii: 84
+                </Label>
+                <Label x:Name="QuestionNumberLabel" Width="100" Foreground="#FF224BB6" FontSize="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    
+                </Label>
+                <Button x:Name="buttonStartQuiz" Height="70"  Click="buttonQuiz_Click">
+                    <TextBlock TextAlignment="Center" FontSize="30" Text="Rozpocznij Quiz" TextWrapping="Wrap" />
+                </Button>
+            </StackPanel>
+            
+        </Grid>
+    </StackPanel>
+</UserControl>

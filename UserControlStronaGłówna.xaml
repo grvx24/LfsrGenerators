@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="PZ_generatory.UserControlStronaGłówna"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory"
+             mc:Ignorable="d" 
+   Background="LightGray">
+    <Grid>
+        <Label Content="PROJEKT ZESPOŁOWY." HorizontalAlignment="Left" Margin="423,86,0,0" VerticalAlignment="Top" Width="270" Height="38" Foreground="#FF224BB6" FontSize="24"/>
+        <Label Content="Generowanie ciągów pseudolosowych." HorizontalAlignment="Left" Margin="365,127,0,0" VerticalAlignment="Top" Foreground="#FF224BB6" FontSize="22"/>
+        <Label Content="Aplikacja edukacyjna." HorizontalAlignment="Left" Margin="460,168,0,0" VerticalAlignment="Top" Foreground="#FF224BB6" FontSize="20"/>
+        <Image HorizontalAlignment="Left" Height="284" Margin="459,259,0,-3" VerticalAlignment="Top" Width="196" Source="Images/logo.png"/>
+    </Grid>
+</UserControl>

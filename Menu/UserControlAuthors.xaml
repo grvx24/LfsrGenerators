@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="PZ_generatory.Menu.UserControlAuthors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ_generatory.Menu"
+         mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Background="White">
+    <Grid x:Name="Authors">
+        <StackPanel HorizontalAlignment="Center" x:Name="StackGrid" >
+            <Label FontSize="35" Foreground="#FF224BB6" HorizontalContentAlignment="Center" Margin="0,10,0,0" >
+                AUTORZY
+            </Label>
+            <Label Margin="60,10,60,0" FontSize="18" Foreground="#FF224BB6"  >
+                <TextBlock ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="WrapWithOverflow"><Run Text="Autorami aplikacji są studenci III roku Informatyki (specialność BSI) na wydziale Elekt"/><Run Text="r"/><Run Text="ycznym."/></TextBlock>
+            </Label>
+            <WrapPanel>
+                <Image x:Name="Paulina" HorizontalAlignment="Left" Margin="30" MouseEnter="MouseEnter_P" MouseLeave="MouseLeave_P" VerticalAlignment="Top" Source="/Images/woman.jpg" Height="200" Width="205" />
+            <Image x:Name="Kamil" HorizontalAlignment="Left"  Margin="30" MouseEnter="MouseEnter_K" MouseLeave="MouseLeave_K" VerticalAlignment="Top" Source="/Images/man.jpg" Height="200" Width="205" />
+            <Image x:Name="Hubert" HorizontalAlignment="Left" Margin="30"  MouseEnter="MouseEnter_H" MouseLeave="MouseLeave_H" VerticalAlignment="Top" Source="/Images/man.jpg" Height="200" Width="205" />
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Paulina Mrozek" Margin="80,0,0,0" Foreground="#FF224BB6" />
+                <Label Content="Kamil Sagalara" Margin="180,0,0,0" Foreground="#FF224BB6" />
+                <Label Content="Hubert Springer" Margin="180,0,0,0" Foreground="#FF224BB6" />
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
