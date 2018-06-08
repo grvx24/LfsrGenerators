@@ -39,12 +39,22 @@
 
                     </StackPanel>
                     <StackPanel Name="Right">
-                        <Label Content="Wybierz typ ciągu do wygenerowania: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top" Width="auto"/>
-                        <ComboBox x:Name="typ" Margin="35,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="30">
-                            <ComboBoxItem Content="Znaki (char)" IsSelected="True"></ComboBoxItem>
-                            <ComboBoxItem Content="Szesnastkowo (byte)"></ComboBoxItem>
-                            <ComboBoxItem Content="Liczby (int)"></ComboBoxItem>
-                        </ComboBox>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Wybierz typ ciągu do wygenerowania: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top" Width="auto"/>
+                            <Label Content="Wyniki testów FIPS-140: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="50,90,0,0" VerticalAlignment="Top" Width="auto"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox x:Name="typ" Margin="35,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="30">
+                                <ComboBoxItem Content="Znaki (char)" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="Szesnastkowo (byte)"></ComboBoxItem>
+                                <ComboBoxItem Content="Liczby (int)"></ComboBoxItem>
+                            </ComboBox>
+                            <materialDesign:PackIcon x:Name="SingleBit" ToolTip="Test pojedynczych bitów." Margin="120,0,0,0" Foreground="Red" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            <materialDesign:PackIcon x:Name="Series" ToolTip="Test serii." Margin="20,0,0,0" Foreground="Red" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            <materialDesign:PackIcon x:Name="LongSeries" ToolTip="Test długiej serii." Margin="20,0,0,0" Foreground="Red" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            <materialDesign:PackIcon x:Name="Poker" ToolTip="Test pokerowy." Margin="20,0,0,0" Foreground="Red" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                        </StackPanel>
                         <Label Content="Wygenerowany ciąg:" Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="wynik" HorizontalAlignment="Left" MinHeight="110" Height="auto" MaxHeight="200" Margin="30,2,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
                         <Button x:Name="wynik_txt" Content="Zapisz (.txt)" HorizontalAlignment="Left" Margin="30,15,0,0" VerticalAlignment="Top" Width="115" Height="31" Click="wynik_txt_Click" />

@@ -1,4 +1,5 @@
 ﻿using LFSR_Generators;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -10,6 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace PZ_generatory.Generators.Samoobcinajacy
 {
@@ -200,5 +208,60 @@ namespace PZ_generatory.Generators.Samoobcinajacy
         {
             series_length.Clear();
         }
+
+        private void tests_TextChanged(object sender, EventArgs e)
+        {
+
+
+            var result = true;
+
+            //SingleBit Tests
+            if (result)
+            {
+                SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                SingleBit.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                SingleBit.Kind = PackIconKind.CloseCircle;
+            }
+            //Series Tests
+            if (result)
+            {
+                Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                Series.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                Series.Kind = PackIconKind.CloseCircle;
+            }
+            //LongSeries Tests
+            if (result)
+            {
+                LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                LongSeries.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                LongSeries.Kind = PackIconKind.CloseCircle;
+            }
+            //Poker Tests
+            if (result)
+            {
+                Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                Poker.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                Poker.Kind = PackIconKind.CloseCircle;
+            }
+
+        }
+
+
     }
 }

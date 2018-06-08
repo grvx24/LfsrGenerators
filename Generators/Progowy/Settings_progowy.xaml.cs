@@ -1,4 +1,5 @@
 ﻿using LFSR_Generators;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -248,5 +249,61 @@ namespace PZ_generatory.Generators.Progowy
         {
             series_length.Clear();
         }
+
+
+        private void tests_TextChanged(object sender, EventArgs e)
+        {
+
+
+            var result = true;
+
+            //SingleBit Tests
+            if (result)
+            {
+                SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                SingleBit.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                SingleBit.Kind = PackIconKind.CloseCircle;
+            }
+            //Series Tests
+            if (result)
+            {
+                Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                Series.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                Series.Kind = PackIconKind.CloseCircle;
+            }
+            //LongSeries Tests
+            if (result)
+            {
+                LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                LongSeries.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                LongSeries.Kind = PackIconKind.CloseCircle;
+            }
+            //Poker Tests
+            if (result)
+            {
+                Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                Poker.Kind = PackIconKind.Approval;
+            }
+            else
+            {
+                Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                Poker.Kind = PackIconKind.CloseCircle;
+            }
+
+        }
+
+
     }
 }

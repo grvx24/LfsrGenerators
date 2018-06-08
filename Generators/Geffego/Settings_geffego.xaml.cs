@@ -1,4 +1,5 @@
 ﻿using LFSR_Generators;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -18,6 +19,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace PZ_generatory.Generators.Geffego
 {
     /// <summary>
@@ -32,7 +35,7 @@ namespace PZ_generatory.Generators.Geffego
         }
         private void PrepareRegisterLenghtCombobox()
         {
-            for (int i = 2; i <=20; i++)
+            for (int i = 2; i <= 20; i++)
             {
                 RegisterLength_ComboBox.Items.Add(i);
             }
@@ -151,20 +154,20 @@ namespace PZ_generatory.Generators.Geffego
                 MessageBox.Show("Długość ciągu do wygenerowania musi być dodatnią liczbą całkowitą.");
                 return;
             }
-           
 
-            uint[] parsed= new uint[3];
+
+            uint[] parsed = new uint[3];
             if ((lfsr1.Text).ToString().Length == 0 || (lfsr2.Text).ToString().Length == 0 || (lfsr3.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Uzupełnij pola z wartościami początkowymi rejestrów.");
                 return;
             }
-            else if (!uint.TryParse(lfsr1.Text, out parsed[0])|| !uint.TryParse(lfsr3.Text, out parsed[1])|| !uint.TryParse(lfsr2.Text, out parsed[2]))
+            else if (!uint.TryParse(lfsr1.Text, out parsed[0]) || !uint.TryParse(lfsr3.Text, out parsed[1]) || !uint.TryParse(lfsr2.Text, out parsed[2]))
             {
                 MessageBox.Show("Wartości początkowe rejestrów muszą być dodatnią liczbą całkowitą.");
                 return;
             }
-            
+
 
 
             int numOfLfsr = 3;
@@ -175,9 +178,9 @@ namespace PZ_generatory.Generators.Geffego
 
             for (int i = 0; i < numOfLfsr; i++)
             {
-               
+
                 lfsr[i] = new Lfsr(registersLength);
-                TextBox tb = (TextBox)this.FindName("lfsr"+(i+1).ToString());
+                TextBox tb = (TextBox)this.FindName("lfsr" + (i + 1).ToString());
 
                 var boolArray = Convert.ToString(parsed[i], 2).Select(s => s.Equals('1')).Take(registersLength).ToArray();
                 var bitArray = new BitArray(registersLength);
@@ -187,7 +190,7 @@ namespace PZ_generatory.Generators.Geffego
                 }
 
                 lfsr[i].SetRegisterValues(bitArray);
-        }
+            }
 
             wynik.Clear();
             LfsrGenerator generator = new GeffesGenerator(lfsr);
@@ -200,7 +203,7 @@ namespace PZ_generatory.Generators.Geffego
             else if (typ.SelectedIndex == 1)
             {
                 var gen1 = generator.GenerateBytes(Convert.ToInt32(series_length.Text));
-        
+
                 wynik.Text = BitConverter.ToString(gen1);
 
             }
@@ -229,5 +232,100 @@ namespace PZ_generatory.Generators.Geffego
         {
             series_length.Clear();
         }
+
+
+        FipsTests fips = new FipsTests();
+
+
+        private void tests_TextChanged(object sender, EventArgs e)
+        {
+            if (byte_type.IsSelected || int_type.IsSelected)
+            {
+                SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3"));
+                SingleBit.Kind = PackIconKind.CloseCircle;
+                Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3"));
+                Series.Kind = PackIconKind.CloseCircle;
+                LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3"));
+                LongSeries.Kind = PackIconKind.CloseCircle;
+                Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3"));
+                Poker.Kind = PackIconKind.CloseCircle;
+            }
+            else
+            {
+
+                var result = StartTestWithTxt();
+
+                //SingleBit Tests
+                if (result.SingleBitTestResult.TestPassed)
+                {
+                    SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                    SingleBit.Kind = PackIconKind.Approval;
+                }
+                else
+                {
+                    SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                    SingleBit.Kind = PackIconKind.CloseCircle;
+                }
+                //Series Tests
+                if (result.SeriesTestResult.TestPassed)
+                {
+                    Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                    Series.Kind = PackIconKind.Approval;
+                }
+                else
+                {
+                    Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                    Series.Kind = PackIconKind.CloseCircle;
+                }
+                //LongSeries Tests
+                if (result.LongSeriesTestResult.TestPassed)
+                {
+                    LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                    LongSeries.Kind = PackIconKind.Approval;
+                }
+                else
+                {
+                    LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                    LongSeries.Kind = PackIconKind.CloseCircle;
+                }
+                //Poker Tests
+                if (result.PokerTestResult.TestPassed)
+                {
+                    Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                    Poker.Kind = PackIconKind.Approval;
+                }
+                else
+                {
+                    Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                    Poker.Kind = PackIconKind.CloseCircle;
+                }
+
+            }
+        }
+
+
+        private class FipsResult
+        {
+            public SingleBitTestResult SingleBitTestResult;
+            public SeriesTestResult SeriesTestResult;
+            public LongSeriesTestResult LongSeriesTestResult;
+            public PokerTestResult PokerTestResult;
+        }
+
+        private FipsResult StartTestWithTxt()
+        {
+            var input = (wynik.Text).ToString();
+            FipsResult fipsResult = new FipsResult()
+            {
+                SingleBitTestResult = fips.SingleBitTest(input),
+                SeriesTestResult = fips.SeriesTest(input),
+                LongSeriesTestResult = fips.LongSeriesTests(input),
+                PokerTestResult = fips.PokerTest(input)
+            };
+
+            return fipsResult;
+
+        }
     }
 }
+
