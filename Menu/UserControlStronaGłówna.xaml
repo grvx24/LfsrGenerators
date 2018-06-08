@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
    Background="LightGray" Height="550" Width="auto">
     <StackPanel HorizontalAlignment="Center" >
-        <Label Content="PROJEKT ZESPOŁOWY."  HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="30"/>
-        <Label Content="Generowanie ciągów pseudolosowych." HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="22"/>
-        <Label Content="Aplikacja edukacyjna." HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="20"/>
+        <Label Content="PROJEKT ZESPOŁOWY"  HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="30"/>
+        <Label Content="Generowanie ciągów pseudolosowych" HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="22"/>
+        <Label Content="Aplikacja edukacyjna" HorizontalAlignment="Center" Foreground="#FF224BB6" FontSize="20"/>
         <Image HorizontalAlignment="Center" Height="250"  Source="/Images/logo.png" Margin="0,30"/>
     </StackPanel>
 </UserControl>

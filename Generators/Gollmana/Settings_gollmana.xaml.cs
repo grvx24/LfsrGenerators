@@ -28,6 +28,16 @@ namespace PZ_generatory.Generators.Gollmana
         public Settings_gollmana()
         {
             InitializeComponent();
+            PrepareRegisterLenghtCombobox();
+        }
+
+        private void PrepareRegisterLenghtCombobox()
+        {
+            for (int i = 2; i <= 20; i++)
+            {
+                RegisterLength_ComboBox.Items.Add(i);
+            }
+            RegisterLength_ComboBox.SelectedIndex = 0;
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
@@ -192,9 +202,12 @@ namespace PZ_generatory.Generators.Gollmana
             int numOfLfsr = Convert.ToInt32(lfsr_amount.Text);
             Lfsr[] lfsr = new Lfsr[numOfLfsr];
             int[] parsed = new int[numOfLfsr];
+
+            var registersLength = Convert.ToInt32(RegisterLength_ComboBox.SelectedItem);
+
             for (int i = 0; i < numOfLfsr; i++)
             {
-                lfsr[i] = new Lfsr();
+                
 
                 string s = ((TextBox)Lfsr_list.Children[((i+1)*2)-1]).Text;
 
@@ -209,10 +222,15 @@ namespace PZ_generatory.Generators.Gollmana
                     MessageBox.Show("Wartości początkowe rejestrów muszą być liczbą.");
                     return;
                 }
+                lfsr[i] = new Lfsr(registersLength);
 
-
-
-                lfsr[i].SetRegisterValues(new BitArray(BitConverter.GetBytes((ushort)(parsed[i]))));
+                var boolArray = Convert.ToString(parsed[i], 2).Select(str => str.Equals('1')).Take(registersLength).ToArray();
+                var bitArray = new BitArray(registersLength);
+                for (int j = 0; j < boolArray.Length; j++)
+                {
+                    bitArray[j] = boolArray[j];
+                }
+                lfsr[i].SetRegisterValues(bitArray);
             }
 
             Stopwatch sw = new Stopwatch();

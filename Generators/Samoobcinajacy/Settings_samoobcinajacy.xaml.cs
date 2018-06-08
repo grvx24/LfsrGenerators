@@ -21,6 +21,15 @@ namespace PZ_generatory.Generators.Samoobcinajacy
         public Settings_samoobcinajacy()
         {
             InitializeComponent();
+            PrepareRegisterLenghtCombobox();
+        }
+        private void PrepareRegisterLenghtCombobox()
+        {
+            for (int i = 2; i <= 20; i++)
+            {
+                RegisterLength_ComboBox.Items.Add(i);
+            }
+            RegisterLength_ComboBox.SelectedIndex = 0;
         }
 
         private void wynik_txt_Click(object sender, RoutedEventArgs e)
@@ -151,41 +160,38 @@ namespace PZ_generatory.Generators.Samoobcinajacy
                 return;
             }
 
+            var registersLength = Convert.ToInt32(RegisterLength_ComboBox.SelectedItem);
+
+            var boolArray = Convert.ToString(parsed, 2).Select(str => str.Equals('1')).Take(registersLength).ToArray();
+            var bitArray = new BitArray(registersLength);
+            for (int j = 0; j < boolArray.Length; j++)
+            {
+                bitArray[j] = boolArray[j];
+            }
 
             int numOfLfsr = 1;
             Lfsr[] lfsr = new Lfsr[numOfLfsr];
-                lfsr[0] = new Lfsr();
+                lfsr[0] = new Lfsr(registersLength);
                 TextBox tb = (TextBox)this.FindName("lfsr1");
-                lfsr[0].SetRegisterValues(new BitArray(BitConverter.GetBytes((ushort)(parsed))));
+                lfsr[0].SetRegisterValues(bitArray);
             
 
-            Stopwatch sw = new Stopwatch();
             wynik.Clear();
             LfsrGenerator generator = new SelfShrinkingGenerator(lfsr);
             if (typ.SelectedIndex == 0)
             {
-                sw.Start();
                 var gen = generator.GenerateBitsAsChars(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = new string(gen);
-                sw.Reset();
             }
             else if (typ.SelectedIndex == 1)
             {
-                sw.Start();
                 var gen1 = generator.GenerateBytes(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = BitConverter.ToString(gen1);
-
-                sw.Reset();
             }
             else if (typ.SelectedIndex == 2)
             {
-                sw.Start();
                 var gen1 = generator.GenerateIntegers(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = String.Join(" ", gen1.Select(p => p.ToString()).ToArray());
-                sw.Reset();
             }
 
         }

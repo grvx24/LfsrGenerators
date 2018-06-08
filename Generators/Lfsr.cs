@@ -11,7 +11,7 @@ namespace LFSR_Generators
     {
         public BitArray Register { get; private set; }
         int[] feedbackFunction;
-        int lenght;
+        int length;
 
         public override string ToString()
         {
@@ -28,10 +28,10 @@ namespace LFSR_Generators
         public Lfsr()
         {
             Register = new BitArray(8);
-            lenght = 8;
+            length = 8;
             Random rng = new Random();
 
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < length; i++)
             {
                 Register[i] = rng.Next(0, 2) > 0;
 
@@ -40,13 +40,13 @@ namespace LFSR_Generators
             FeedbackFunction();
         }
 
-        public Lfsr(int lenght)
+        public Lfsr(int length)
         {
-            Register = new BitArray(lenght);
-            this.lenght = lenght;
+            Register = new BitArray(length);
+            this.length = length;
             Random rng = new Random();
 
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < length; i++)
             {
                 Register[i] = rng.Next(0, 2) > 0;
 
@@ -74,8 +74,8 @@ namespace LFSR_Generators
         public void SetRegisterValues(BitArray array)
         {
             Register = new BitArray(array.Length);
-            lenght = array.Length;
-            for (int i = 0; i < lenght; i++)
+            length = array.Length;
+            for (int i = 0; i < length; i++)
             {
                 Register[i] = array[i];
             }
@@ -106,30 +106,30 @@ namespace LFSR_Generators
         }
         public bool GetOutputBit()
         {
-            return Register[Register.Length - 1];
+            return Register[0];
         }
 
         private void FeedbackFunction()
         {
-            switch (lenght)
+            switch (length)
             {
                 case 2:
-                    feedbackFunction = new int[] { 0, lenght - 1 };
+                    feedbackFunction = new int[] { 0, length - 1 };
                     break;
                 case 3:
-                    feedbackFunction = new int[] { 0, lenght - 1 };
+                    feedbackFunction = new int[] { 0, length - 1 };
                     break;
                 case 4:
-                    feedbackFunction = new int[] { 0, lenght - 1 };
+                    feedbackFunction = new int[] { 0, length - 1 };
                     break;
                 case 5:
                     feedbackFunction = new int[] { 0, 2 };
                     break;
                 case 6:
-                    feedbackFunction = new int[] { 0, lenght - 1 };
+                    feedbackFunction = new int[] { 0, length - 1 };
                     break;
                 case 7:
-                    feedbackFunction = new int[] { 0, lenght - 1 };
+                    feedbackFunction = new int[] { 0, length - 1 };
                     break;
                 case 8:
                     feedbackFunction = new int[] { 0, 1, 6, 7 };

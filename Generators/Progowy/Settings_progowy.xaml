@@ -14,7 +14,11 @@
             <StackPanel>
                 <WrapPanel>
                     <StackPanel Name="Left" Width="280">
-                        <Label Content="Podaj liczbę rejsestór LFSR: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,90,0,0" VerticalAlignment="Top" Width="188"/>
+                        <Label Content="Podaj liczbę rejestrów LFSR: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="188"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FF224BB6">Liczba bitów rejestru</Label>
+                            <ComboBox Name="RegisterLength_ComboBox" MinWidth="75" Margin="10,0,0,0"></ComboBox>
+                        </StackPanel>
                         <TextBox x:Name="lfsr_amount"  FontSize="18" HorizontalAlignment="Left" Height="25" Width="40" TextAlignment="Center" Margin="0,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
                         <Button x:Name="OK" Content="OK" HorizontalAlignment="Left" Margin="50,-25,0,0" VerticalAlignment="Top" Width="50" Height="25" Click="OK_Click" />
                         <Label Content="Ustaw wartości początkowe rejestrów: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="auto"/>

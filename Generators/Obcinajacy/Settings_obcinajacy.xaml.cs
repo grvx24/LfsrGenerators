@@ -21,7 +21,17 @@ namespace PZ_generatory.Generators.Obcinajacy
         public Settings_obcinajacy()
         {
             InitializeComponent();
+            PrepareRegisterLenghtCombobox();
         }
+        private void PrepareRegisterLenghtCombobox()
+        {
+            for (int i = 2; i <= 20; i++)
+            {
+                RegisterLength_ComboBox.Items.Add(i);
+            }
+            RegisterLength_ComboBox.SelectedIndex = 0;
+        }
+
         private void wynik_txt_Click(object sender, RoutedEventArgs e)
         {
             Stream myStream;
@@ -151,13 +161,25 @@ namespace PZ_generatory.Generators.Obcinajacy
                 return;
             }
 
+            var registersLength = Convert.ToInt32(RegisterLength_ComboBox.SelectedItem);
+
+
             int numOfLfsr = 2;
             Lfsr[] lfsr = new Lfsr[numOfLfsr];
             for (int i = 0; i < numOfLfsr; i++)
             {
                 lfsr[i] = new Lfsr();
                 TextBox tb = (TextBox)this.FindName("lfsr" + (i + 1).ToString());
-                lfsr[i].SetRegisterValues(new BitArray(BitConverter.GetBytes((ushort)(parsed[i]))));
+
+                lfsr[i] = new Lfsr(registersLength);
+
+                var boolArray = Convert.ToString(parsed[i], 2).Select(str => str.Equals('1')).Take(registersLength).ToArray();
+                var bitArray = new BitArray(registersLength);
+                for (int j = 0; j < boolArray.Length; j++)
+                {
+                    bitArray[j] = boolArray[j];
+                }
+                lfsr[i].SetRegisterValues(bitArray);
             }
 
             Stopwatch sw = new Stopwatch();
