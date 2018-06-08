@@ -16,11 +16,11 @@
                 GENERATOR PROGOWY
             </Label>
             <Label Margin="60,10,60,0" FontSize="18" Foreground="#FF224BB6">
-                <TextBlock TextWrapping="WrapWithOverflow" Text="   Zaproponowany przez J.O. Bruera w 1984 r. Uzywa zmiennej (nieparzystej) liczby rejestrów LFSR. Funkcje progowa wyraza sie wzorem:"/>
+                <TextBlock TextWrapping="WrapWithOverflow" Text="   Zaproponowany przez J.O. Bruera w 1984 r. Używa zmiennej (nieparzystej) liczby rejestrów LFSR. Funkcje progową wyraża się wzorem:"/>
             </Label>
             <Image  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Source="/Images/wz_progowy.PNG" Height="65" Width="252"/>
             <Label Margin="60,-5" FontSize="18" Foreground="#FF224BB6">
-                <TextBlock TextWrapping="WrapWithOverflow" Text="   Okres tego generatora jest maksymalny wtedy gdy długosci wszystkich rejestrów sa wzglednie pierwsze, a wielomiany gałezi sprzezenia zwrotnego pierwotne. Złozonosc liniowa generatora zbudowanego z trzech rejestrów jest równa L1L2 + L1L3 + L2L3 gdzie L oznacza długosc rejestru, a jego okres jest iloczynem okresów trzech rejestrów składowych." />
+                <TextBlock TextWrapping="WrapWithOverflow" Text="   Okres tego generatora jest maksymalny wtedy gdy długości wszystkich rejestrów sa względnie pierwsze, a wielomiany gałęzi sprzężenia zwrotnego pierwotne. Złożoność liniowa generatora zbudowanego z trzech rejestrów jest równa L1L2 + L1L3 + L2L3 gdzie L oznacza długosc rejestru, a jego okres jest iloczynem okresów trzech rejestrów składowych." />
             </Label>
             <Image Margin="0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Source="/Images/gen_progowy.PNG" Height="193" Width="418" />
             <Grid Margin="0,-15">

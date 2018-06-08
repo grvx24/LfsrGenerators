@@ -133,31 +133,27 @@ namespace PZ_generatory.Generators.Obcinajacy
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int parsedValue;
-            if (!int.TryParse(series_length.Text, out parsedValue))
-            {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być liczbą całkowitą.");
-                return;
-            }
-            else if ((series_length.Text).ToString().Length == 0)
+            uint parsedValue;
+            if ((series_length.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Podaj długość ciągu do wygenerowania.");
                 return;
             }
-            else if (Convert.ToInt32(series_length.Text) < 1)
+            else if (!uint.TryParse(series_length.Text, out parsedValue))
             {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być większa od zera.");
+                MessageBox.Show("Długość ciągu do wygenerowania musi być dodatnią liczbą całkowitą.");
                 return;
             }
-            int[] parsed = new int[2];
-            if (!int.TryParse(lfsr1.Text, out parsed[0]) || !int.TryParse(lfsr2.Text, out parsed[1]))
-            {
-                MessageBox.Show("Wartości początkowe rejestrów muszą być liczbą.");
-                return;
-            }
-            else if ((lfsr1.Text).ToString().Length == 0 || (lfsr2.Text).ToString().Length == 0)
+
+            uint[] parsed = new uint[2];
+            if ((lfsr1.Text).ToString().Length == 0 || (lfsr2.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Uzupełnij pola z wartościami początkowymi rejestrów.");
+                return;
+            }
+            else if (!uint.TryParse(lfsr1.Text, out parsed[0]) || !uint.TryParse(lfsr2.Text, out parsed[2]))
+            {
+                MessageBox.Show("Wartości początkowe rejestrów muszą być dodatnią liczbą całkowitą.");
                 return;
             }
 
@@ -182,34 +178,38 @@ namespace PZ_generatory.Generators.Obcinajacy
                 lfsr[i].SetRegisterValues(bitArray);
             }
 
-            Stopwatch sw = new Stopwatch();
+            
             wynik.Clear();
             LfsrGenerator generator = new ShrinkingGenerator(lfsr);
             if (typ.SelectedIndex == 0)
             {
-                sw.Start();
-                var gen = generator.GenerateBitsAsChars(Convert.ToInt32(series_length.Text));
-                sw.Stop();
+             
+                var gen = generator.GenerateBitsAsChars(Convert.ToInt32(series_length.Text));;
                 wynik.Text = new string(gen);
-                sw.Reset();
             }
             else if (typ.SelectedIndex == 1)
             {
-                sw.Start();
                 var gen1 = generator.GenerateBytes(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = BitConverter.ToString(gen1);
-                sw.Reset();
             }
             else if (typ.SelectedIndex == 2)
             {
-                sw.Start();
                 var gen1 = generator.GenerateIntegers(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = String.Join(" ", gen1.Select(p => p.ToString()).ToArray());
-                sw.Reset();
             }
 
+        }
+        private void Clear_lfsr1(object sender, RoutedEventArgs e)
+        {
+            lfsr1.Clear();
+        }
+        private void Clear_lfsr2(object sender, RoutedEventArgs e)
+        {
+            lfsr2.Clear();
+        }
+        private void Clear_series_length(object sender, RoutedEventArgs e)
+        {
+            series_length.Clear();
         }
     }
 }

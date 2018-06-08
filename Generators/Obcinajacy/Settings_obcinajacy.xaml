@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PZ_generatory.Generators.Obcinajacy"
            mc:Ignorable="d" 
              Height="Auto" Width="Auto" Background="White">
@@ -17,24 +18,39 @@
                         <Label Content="Ustaw wartości początkowe rejestrów:" Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="auto"/>
                         <StackPanel Orientation="Horizontal">
                             <Label Foreground="#FF224BB6">Liczba bitów rejestru</Label>
-                            <ComboBox Name="RegisterLength_ComboBox" MinWidth="75" Margin="10,0,0,0"></ComboBox>
+                            <ComboBox Name="RegisterLength_ComboBox" ToolTip="Nadmiarowe bity zostaną pominięte." MinWidth="75" Margin="10,0,0,0"></ComboBox>
                         </StackPanel>
                         <Label Content="LFSR 1: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto"/>
-                        <TextBox x:Name="lfsr1"  FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,-5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="lfsr1" ToolTip="Liczba z zakresu od 0 do 4 294 967 295 (uint)." FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                            <Button Width="20" Height="20" Click="Clear_lfsr1"  Margin="1,0,0,0"  Background="Transparent" BorderBrush="Transparent"   >
+                                <materialDesign:PackIcon Margin="-16" Foreground="#FF224BB6" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            </Button>
+                        </StackPanel>
                         <Label Content="LFSR 2: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto"/>
-                        <TextBox x:Name="lfsr2"  FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,-5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="lfsr2" ToolTip="Liczba z zakresu od 0 do 4 294 967 295 (uint)." FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                            <Button Width="20" Height="20" Click="Clear_lfsr1"  Margin="1,0,0,0"  Background="Transparent" BorderBrush="Transparent"   >
+                                <materialDesign:PackIcon Margin="-16" Foreground="#FF224BB6" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            </Button>
+                        </StackPanel>
                         <StackPanel x:Name="Lfsr_list" ScrollViewer.VerticalScrollBarVisibility="Visible"  MaxHeight="150">
                         </StackPanel>
                         <Label Content="Podaj długość ciągu do wygenerowania: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto"/>
-                        <TextBox x:Name="series_length"  FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="series_length" ToolTip="Liczba z zakresu od 0 do 4 294 967 295 (uint)."  FontSize="18" HorizontalAlignment="Left" Height="25" MinWidth="25" Width="auto" TextAlignment="Center" Margin="6,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+                            <Button Width="20" Height="20" Click="Clear_series_length"  Margin="1,0,0,0"  Background="Transparent" BorderBrush="Transparent"   >
+                                <materialDesign:PackIcon Margin="-16" Foreground="#FF224BB6" Kind="CloseCircle" Width="20" Height="20" VerticalAlignment="Center" />
+                            </Button>
+                        </StackPanel>
 
                     </StackPanel>
                     <StackPanel Name="Right">
                         <Label Content="Wybierz typ ciągu do wygenerowania: " Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top" Width="auto"/>
-                        <ComboBox x:Name="typ" Margin="35,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="30">
-                            <ComboBoxItem Content="Chars" IsSelected="True"></ComboBoxItem>
-                            <ComboBoxItem Content="Bytes"></ComboBoxItem>
-                            <ComboBoxItem Content="Integers"></ComboBoxItem>
+                        <ComboBox x:Name="typ" Margin="35,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="30">
+                            <ComboBoxItem Content="Znaki (char)" IsSelected="True"></ComboBoxItem>
+                            <ComboBoxItem Content="Szesnastkowo (byte)"></ComboBoxItem>
+                            <ComboBoxItem Content="Liczby (int)"></ComboBoxItem>
                         </ComboBox>
                         <Label Content="Wygenerowany ciąg:" Foreground="#FF224BB6" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="wynik" HorizontalAlignment="Left" MinHeight="110" Height="auto" MaxHeight="200" Margin="30,2,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>

@@ -412,15 +412,15 @@
     <Resource Include="Images\nosacz.jpg" />
     <Resource Include="Images\man.jpg" />
     <Resource Include="Images\woman.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ProjectDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ProjectDb_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ProjectDb.mdf</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

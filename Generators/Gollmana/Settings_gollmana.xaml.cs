@@ -42,27 +42,18 @@ namespace PZ_generatory.Generators.Gollmana
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            int parsedValue;
-            if (!int.TryParse(lfsr_amount.Text, out parsedValue))
+            uint parsedValue;
+            if ((lfsr_amount.Text).ToString().Length == 0)
             {
-                MessageBox.Show("Musisz podać liczbę rejestrów.");
+                MessageBox.Show("Podaj liczbę rejestrów.");
                 return;
             }
-            else if ((lfsr_amount.Text).ToString().Length == 0)
+            else if (!uint.TryParse(lfsr_amount.Text, out parsedValue))
             {
-                MessageBox.Show("Podaj liczbę rejestrów (nieparzysta).");
+                MessageBox.Show("Liczba rejestrów musi musi być dodatnią liczbą całkowitą.");
                 return;
             }
-            else if (Convert.ToInt32(lfsr_amount.Text) < 1)
-            {
-                MessageBox.Show("Liczba rejestrów musi być większa od zera.");
-                return;
-            }
-
-
             Generuj.IsEnabled = true;
-
-
 
             Lfsr_list.Children.Clear();
                 List<string> registers = new List<string>();
@@ -70,10 +61,11 @@ namespace PZ_generatory.Generators.Gollmana
                 for (int i = 0; i < numOfLfsr; i++)
                 {
                     TextBox textBox = new TextBox();
-                    Label label = new Label();
                     textBox.Name = "textBox" +(i+1).ToString();
                     textBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF224BB6"));
                     textBox.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    textBox.ToolTip = "Liczba z zakresu od 0 do 4 294 967 295 (uint).";
+                    Label label = new Label();
                     label.Content = "LFSR " + (i + 1).ToString();
                     Lfsr_list.Children.Add(label);
                     Lfsr_list.Children.Add(textBox);
@@ -181,45 +173,37 @@ namespace PZ_generatory.Generators.Gollmana
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int parsedValue;
-           
-            if (!int.TryParse(series_length.Text, out parsedValue))
-            {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być liczbą całkowitą.");
-                return;
-            }
-            else if ((series_length.Text).ToString().Length == 0)
+            uint parsedValue;
+            if ((series_length.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Podaj długość ciągu do wygenerowania.");
                 return;
             }
-            else if (Convert.ToInt32(series_length.Text) < 1)
+            else if (!uint.TryParse(series_length.Text, out parsedValue))
             {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być większa od zera.");
+                MessageBox.Show("Długość ciągu do wygenerowania musi być dodatnią liczbą całkowitą.");
                 return;
-            }
+            } 
 
             int numOfLfsr = Convert.ToInt32(lfsr_amount.Text);
             Lfsr[] lfsr = new Lfsr[numOfLfsr];
-            int[] parsed = new int[numOfLfsr];
+            uint[] parsed = new uint[numOfLfsr];
 
             var registersLength = Convert.ToInt32(RegisterLength_ComboBox.SelectedItem);
 
             for (int i = 0; i < numOfLfsr; i++)
-            {
-                
-
+            {              
                 string s = ((TextBox)Lfsr_list.Children[((i+1)*2)-1]).Text;
 
                 if (s.Length == 0)
                 {
-                    MessageBox.Show("Musisz podać wartości początkowe rejestrów.");
+                    MessageBox.Show("Uzupełnij pola z wartościami początkowymi rejestrów.");
                     return;
                 }
 
-                else if (!int.TryParse(s, out parsed[i]))
+                else if (!uint.TryParse(s, out parsed[i]))
                 {
-                    MessageBox.Show("Wartości początkowe rejestrów muszą być liczbą.");
+                    MessageBox.Show("Wartości początkowe rejestrów muszą być dodatnią liczbą całkowitą.");
                     return;
                 }
                 lfsr[i] = new Lfsr(registersLength);
@@ -238,30 +222,28 @@ namespace PZ_generatory.Generators.Gollmana
             LfsrGenerator generator = new CascadeGenerator(lfsr);
             if (typ.SelectedIndex == 0)
             {       
-                sw.Start();
                 var gen = generator.GenerateBitsAsChars(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = new string(gen);
-                sw.Reset();
             }
             else if(typ.SelectedIndex == 1)
             {
-                sw.Start();
                 var gen1 = generator.GenerateBytes(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = BitConverter.ToString(gen1);
 
-                sw.Reset();
             }
             else if (typ.SelectedIndex == 2)
             {
-                sw.Start();
                 var gen1 = generator.GenerateIntegers(Convert.ToInt32(series_length.Text));
-                sw.Stop();
                 wynik.Text = String.Join(" ", gen1.Select(p => p.ToString()).ToArray());
-                sw.Reset();
+                
             }
 
         }
+
+        private void Clear_series_length(object sender, RoutedEventArgs e)
+        {
+            series_length.Clear();
+        }
+
     }
 }

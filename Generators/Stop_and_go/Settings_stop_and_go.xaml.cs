@@ -141,31 +141,28 @@ namespace PZ_generatory.Generators.Stop_and_go
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int parsedValue;
-            if (!int.TryParse(series_length.Text, out parsedValue))
-            {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być liczbą całkowitą.");
-                return;
-            }
-            else if ((series_length.Text).ToString().Length == 0)
+            uint parsedValue;
+            if ((series_length.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Podaj długość ciągu do wygenerowania.");
                 return;
             }
-            else if (Convert.ToInt32(series_length.Text) < 1)
+            else if (!uint.TryParse(series_length.Text, out parsedValue))
             {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być większa od zera.");
+                MessageBox.Show("Długość ciągu do wygenerowania musi być dodatnią liczbą całkowitą.");
                 return;
             }
-            int[] parsed=new int[3];
-            if (!int.TryParse(lfsr1.Text, out parsed[0]) || !int.TryParse(lfsr3.Text, out parsed[1]) || !int.TryParse(lfsr2.Text, out parsed[2]))
-            {
-                MessageBox.Show("Musisz podać wartości początkowe rejestrów z zakresu (0-255).");
-                return;
-            }
-            else if ((lfsr1.Text).ToString().Length == 0 || (lfsr2.Text).ToString().Length == 0 || (lfsr3.Text).ToString().Length == 0)
+
+
+            uint[] parsed = new uint[3];
+            if ((lfsr1.Text).ToString().Length == 0 || (lfsr2.Text).ToString().Length == 0 || (lfsr3.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Uzupełnij pola z wartościami początkowymi rejestrów.");
+                return;
+            }
+            else if (!uint.TryParse(lfsr1.Text, out parsed[0]) || !uint.TryParse(lfsr3.Text, out parsed[1]) || !uint.TryParse(lfsr2.Text, out parsed[2]))
+            {
+                MessageBox.Show("Wartości początkowe rejestrów muszą być dodatnią liczbą całkowitą.");
                 return;
             }
 
@@ -205,6 +202,22 @@ namespace PZ_generatory.Generators.Stop_and_go
                 wynik.Text = String.Join(" ", gen1.Select(p => p.ToString()).ToArray());
             }
 
+        }
+        private void Clear_lfsr1(object sender, RoutedEventArgs e)
+        {
+            lfsr1.Clear();
+        }
+        private void Clear_lfsr2(object sender, RoutedEventArgs e)
+        {
+            lfsr2.Clear();
+        }
+        private void Clear_lfsr3(object sender, RoutedEventArgs e)
+        {
+            lfsr3.Clear();
+        }
+        private void Clear_series_length(object sender, RoutedEventArgs e)
+        {
+            series_length.Clear();
         }
     }
 }

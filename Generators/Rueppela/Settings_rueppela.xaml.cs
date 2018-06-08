@@ -132,31 +132,27 @@ namespace PZ_generatory.Generators.Rueppela
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int parsedValue;
-            if (!int.TryParse(series_length.Text, out parsedValue))
-            {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być liczbą całkowitą.");
-                return;
-            }
-            else if ((series_length.Text).ToString().Length == 0)
+            uint parsedValue;
+            if ((series_length.Text).ToString().Length == 0)
             {
                 MessageBox.Show("Podaj długość ciągu do wygenerowania.");
                 return;
             }
-            else if (Convert.ToInt32(series_length.Text) < 1)
+            else if (!uint.TryParse(series_length.Text, out parsedValue))
             {
-                MessageBox.Show("Długość ciągu do wygenerowania musi być większa od zera.");
+                MessageBox.Show("Długość ciągu do wygenerowania musi być dodatnią liczbą całkowitą.");
                 return;
             }
-            int parsed;
-            if (!int.TryParse(lfsr1.Text, out parsed))
+
+            uint parsed;
+            if (!uint.TryParse(lfsr1.Text, out parsed))
             {
-                MessageBox.Show("Wartości początkowe rejestrów muszą być liczbą.");
+                MessageBox.Show("Wartości początkowe rejestrów muszą być dodatnią liczbą całkowitą.");
                 return;
             }
             else if ((lfsr1.Text).ToString().Length == 0)
             {
-                MessageBox.Show("Uzupełnij pole z wartością początkowom rejestru.");
+                MessageBox.Show("Uzupełnij pola z wartościami początkowymi rejestrów.");
                 return;
             }
 
@@ -198,6 +194,16 @@ namespace PZ_generatory.Generators.Rueppela
                 wynik.Text = String.Join(" ", gen1.Select(p => p.ToString()).ToArray());
             }
 
+        }
+
+        private void Clear_lfsr1(object sender, RoutedEventArgs e)
+        {
+            lfsr1.Clear();
+        }
+       
+        private void Clear_series_length(object sender, RoutedEventArgs e)
+        {
+            series_length.Clear();
         }
     }
 }
