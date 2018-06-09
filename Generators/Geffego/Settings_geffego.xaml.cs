@@ -255,50 +255,68 @@ namespace PZ_generatory.Generators.Geffego
 
                 var result = StartTestWithTxt();
 
-                //SingleBit Tests
-                if (result.SingleBitTestResult.TestPassed)
+                if(result!=null)
                 {
-                    SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
-                    SingleBit.Kind = PackIconKind.Approval;
-                }
-                else
+                    //SingleBit Tests
+                    if (result.SingleBitTestResult.TestPassed)
+                    {
+                        SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                        SingleBit.Kind = PackIconKind.Approval;
+                    }
+                    else
+                    {
+                        SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                        SingleBit.Kind = PackIconKind.CloseCircle;
+                    }
+                    //Series Tests
+                    if (result.SeriesTestResult.TestPassed)
+                    {
+                        Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                        Series.Kind = PackIconKind.Approval;
+                    }
+                    else
+                    {
+                        Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                        Series.Kind = PackIconKind.CloseCircle;
+                    }
+                    //LongSeries Tests
+                    if (result.LongSeriesTestResult.TestPassed)
+                    {
+                        LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                        LongSeries.Kind = PackIconKind.Approval;
+                    }
+                    else
+                    {
+                        LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                        LongSeries.Kind = PackIconKind.CloseCircle;
+                    }
+                    //Poker Tests
+                    if (result.PokerTestResult.TestPassed)
+                    {
+                        Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                        Poker.Kind = PackIconKind.Approval;
+                    }
+                    else
+                    {
+                        Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                        Poker.Kind = PackIconKind.CloseCircle;
+                    }
+                }else
                 {
                     SingleBit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                     SingleBit.Kind = PackIconKind.CloseCircle;
-                }
-                //Series Tests
-                if (result.SeriesTestResult.TestPassed)
-                {
-                    Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
-                    Series.Kind = PackIconKind.Approval;
-                }
-                else
-                {
+
                     Series.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                     Series.Kind = PackIconKind.CloseCircle;
-                }
-                //LongSeries Tests
-                if (result.LongSeriesTestResult.TestPassed)
-                {
-                    LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
-                    LongSeries.Kind = PackIconKind.Approval;
-                }
-                else
-                {
+
                     LongSeries.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                     LongSeries.Kind = PackIconKind.CloseCircle;
-                }
-                //Poker Tests
-                if (result.PokerTestResult.TestPassed)
-                {
-                    Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
-                    Poker.Kind = PackIconKind.Approval;
-                }
-                else
-                {
+
                     Poker.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                     Poker.Kind = PackIconKind.CloseCircle;
                 }
+
+                
 
             }
         }
@@ -314,7 +332,14 @@ namespace PZ_generatory.Generators.Geffego
 
         private FipsResult StartTestWithTxt()
         {
-            var input = (wynik.Text).ToString();
+            if(wynik.Text.Length<20000)
+            {
+                //Jak ciąg będzie mniejszy niż <20000 to zwraca null, potem a potem można sprawdzić czy result jest nullem i coś zadziałać :)
+                return null;
+
+            }
+
+            var input = (wynik.Text).Substring(0, 20000);
             FipsResult fipsResult = new FipsResult()
             {
                 SingleBitTestResult = fips.SingleBitTest(input),
