@@ -40,7 +40,7 @@ namespace PZ_generatory.Quiz
 
         private List<Answer> loadAnswearsByQuestionID(int QuestionID)
         {
-            var db = new DBLinqClassesDataContext();
+            var db = new DataClasses1DataContext();
             return db.Answers.Where(s => s.QuestionId == QuestionID).ToList();
         }
 

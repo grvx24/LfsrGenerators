@@ -89,13 +89,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPanel\QuestionInfo.cs" />
+    <Compile Include="AdminPanel\CategoryInfo.cs" />
     <Compile Include="AdminPanel\LoginToAdminPanel.xaml.cs">
       <DependentUpon>LoginToAdminPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DBLinqClasses.designer.cs">
+    <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBLinqClasses.dbml</DependentUpon>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="Encryptor\Decryptor.xaml.cs">
       <DependentUpon>Decryptor.xaml</DependentUpon>
@@ -350,13 +352,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DBLinqClasses.dbml">
+    <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DBLinqClasses.designer.cs</LastGenOutput>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBLinqClasses.dbml.layout">
-      <DependentUpon>DBLinqClasses.dbml</DependentUpon>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

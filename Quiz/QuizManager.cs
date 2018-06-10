@@ -8,7 +8,7 @@ namespace PZ_generatory.Quiz
 {
     class QuizManager
     {
-        DBLinqClassesDataContext db = new DBLinqClassesDataContext();
+        DataClasses1DataContext db = new DataClasses1DataContext();
         List<Question> _questions = new List<Question>();
         public int howManyQuestionInQuiz = 8;
         public int actualQuestion = 0;
@@ -17,6 +17,7 @@ namespace PZ_generatory.Quiz
         Label InfoAboutActualQuestion;
         bool[] UserAnswears;
         public event EventHandler ChangeButtonNextquestionEvent;
+        bool quizEnded;
 
         public bool _canStart;
 
@@ -67,7 +68,7 @@ namespace PZ_generatory.Quiz
         public void QuestionEnded(object sender, EventArgs e)
         {
             var a = sender as UserControlQuestion;
-            if (a.Questionnumber+1 == actualQuestion)
+            if (a.Questionnumber+1 == actualQuestion && !quizEnded)
             { 
             UserAnswears[actualQuestion - 1] = a._isCorrect;
 
@@ -98,7 +99,7 @@ namespace PZ_generatory.Quiz
                 EventHandler handler = ChangeButtonNextquestionEvent;
                  handler(this, e);
 
-
+                quizEnded = true;
                 a = new EndQuizUserControl(goodAnswer, UserAnswears.Length);
             }
             else
@@ -107,18 +108,7 @@ namespace PZ_generatory.Quiz
                 a = new UserControlQuestion(_questions[actualQuestion], QuestionEnded, actualQuestion);
                 actualQuestion++;
             }
-            if (actualQuestion > 1)
-            {
-                var b = questionPlace.Children[0] as UserControlQuestion;
-                var c = b.TimerGrid.Children[0] as TimerControl;
-
-                var d = c.Animation;
-                var g = c.timer;
-
-                
-            }
            
-
             questionPlace.Children.Clear();
             questionPlace.Children.Add(a);
         }

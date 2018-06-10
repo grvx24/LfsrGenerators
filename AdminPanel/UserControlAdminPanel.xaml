@@ -1,42 +1,282 @@
-﻿<UserControl x:Class="PZ_generatory.AdminPanel.UserControlAdminPanel"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PZ_generatory"
+             xmlns:local1="clr-namespace:PZ_generatory.AdminPanel" 
+             x:Class="PZ_generatory.AdminPanel.UserControlAdminPanel"
              mc:Ignorable="d" 
              MinWidth="880"
-             Height="550" Width="auto">
-    <Grid Background="White">
-        <StackPanel Orientation="Vertical">
-            <ListBox  x:Name="listBox" Margin="10"  
-                     FontSize="20" Foreground="White">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.Items>
-                    <Button HorizontalContentAlignment="Center" Width="250" Height="80" FontSize="20" Click="ListBoxItem_Selected">
-                        Kategorie
-                    </Button>
-                    <Button HorizontalContentAlignment="Center" Width="250" Height="80"  FontSize="20" Click="ListBoxItem_Selected">
-                        Pytania
-                    </Button>
-                    <Button HorizontalContentAlignment="Center" Width="250" Height="80"  FontSize="20" Click="ListBoxItem_Selected">
-                        Odpowiedzi
-                    </Button>
-                </ListBox.Items>
-            </ListBox>
-            <DataGrid x:Name="dataGrid" Height="334" Margin="10,0,10,10" AutoGenerateColumns="True" FontSize="20" />
-            <Button HorizontalAlignment="Right" Width="200" Height="80" Margin="30,0" FontSize="20" Click="Button_Click">
-                Zapisz   
-            </Button>
+             Height="550" Width="auto" >
+    <UserControl.Resources>
+        <materialDesign:PackIcon x:Key="Delete" Kind="Delete" Foreground="White" Width="25" Height="25"/>
+        <materialDesign:PackIcon x:Key="Add" Kind="Plus" Foreground="White" Width="25" Height="25"/>
+        <local:Category x:Key="Category"/>
+        <local1:CategoryInfo x:Key="CategoryInfo"/>
+        <local:Question x:Key="Question"/>
+    </UserControl.Resources>
+    
+    
+    <Grid  Background="#FF224BB6">
 
-        </StackPanel>
+        <TabControl Margin="10">
+            <TabItem x:Name="AddQuestionTab" Header="Dodaj pytanie" Height="40"  Foreground="#FF224BB6" FontSize="20">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Treść pytania" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF224BB6"/>
+                    <TextBox x:Name="QuestionContent" Height="134" Width="832" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="10,0,10,10" />
+                    <WrapPanel MaxWidth="1080" HorizontalAlignment="Center">
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 1" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox x:Name="Answer1Content" Height="70" TextWrapping="Wrap" Width="370" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="Answer1CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                            
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 2" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70"  x:Name="Answer2Content"  Width="370" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="Answer2CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 3" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70" Width="370"  x:Name="Answer3Content" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="Answer3CheckBox" >
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 4" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70" Width="370"  x:Name="Answer4Content" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="Answer4CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Margin="0,0,100,0">
+                            <Label  Content="Czas przezanczony na pytanie:" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                <TextBox x:Name="QuestionTime" Width="150" PreviewTextInput="NumberValidationTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                    30
+                                </TextBox>
+                                <Label Foreground="#FF224BB6" FontSize="18">
+                                    sekund
+                                </Label>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="Kategoria" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <ComboBox x:Name="CategoryList"  HorizontalAlignment="Left" MinWidth="300" Margin="5,0,5,5" DataContext="{Binding Source={StaticResource Category}}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding CategoryName}"></Label>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Height="60" Width="100" FontSize="20" Margin="10,10,50,10" Click="AddQuestionClick">
+                            Dodaj
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Kategorie" Foreground="#FF224BB6" FontSize="20">
+                <StackPanel>
+                    <DataGrid Height="388" MaxWidth="1060" CanUserAddRows="False" x:Name="CategoryGrid" FontSize="20" Foreground="#FF224BB6" AutoGenerateColumns="False" DataContext="{Binding Source={StaticResource CategoryInfo}}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn IsReadOnly="True" Header="Nazwa kategorii" Foreground="#FF224BB6" Binding="{Binding CategoryName}" />
+                            <DataGridTextColumn   />
+                            <DataGridTemplateColumn IsReadOnly="True" Header="Liczba pytań w kategorii" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Foreground="#FF224BB6" Content="{Binding HowManyQuestionsInCategory}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                            
+                                        </Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Usuń" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button HorizontalAlignment="Center" Click="DeleteCategory">
+                                            <materialDesign:PackIcon Kind="Delete"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Dodaj pytanie" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button HorizontalAlignment="Center" Click="GoToAddQuestionToCategory">
+                                            <materialDesign:PackIcon Kind="Plus"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel >
+                            <Label Content="Nazwa kategorii" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF224BB6"/>
+                            <TextBox x:Name="NewCategoryName" PreviewTextInput="LettersValidationTextBox"  Height="40" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="5"/>
+                        </StackPanel>
+                        <Button VerticalAlignment="Bottom" Height="60"  FontSize="20" Margin="10,10,50,5" Click="AddCategory">
+                            Dodaj kategorie
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Pytania" Foreground="#FF224BB6" FontSize="20" HorizontalAlignment="Left" Width="80">
+                <StackPanel>
+                    <DataGrid Height="480" MaxWidth="1060"  CanUserAddRows="False" x:Name="QuestionGrid" FontSize="20" Foreground="#FF224BB6" AutoGenerateColumns="False" DataContext="{Binding Source={StaticResource Question}}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn IsReadOnly="True" Header="Nazwa kategorii" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Foreground="#FF224BB6" PreviewTextInput="NumberValidationTextBox" Content="{Binding Category.CategoryName}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
 
+                                        </Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="True" Header="Czas" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Foreground="#FF224BB6" PreviewTextInput="NumberValidationTextBox" Content="{Binding Time}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
 
+                                        </Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Edytuj pytanie" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button HorizontalAlignment="Center" Click="GoToEditQuestion">
+                                            <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Usuń pytanie" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button HorizontalAlignment="Center" Click="DeleteQuestion">
+                                            <materialDesign:PackIcon Kind="Delete" Width="20" Height="20"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Treść pytania" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox IsEnabled="False" TextWrapping="Wrap"  MaxWidth="550"  Text="{Binding Content}" >
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="EditQuestionTab" Visibility="Hidden" Header="Edycja pytania" Foreground="#FF224BB6" FontSize="20">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Treść pytania" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF224BB6"/>
+                    <TextBox x:Name="EditedQuestionContent" Height="134" Width="832" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="10,0,10,10" />
+                    <WrapPanel MaxWidth="1080" HorizontalAlignment="Center">
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 1" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox x:Name="EditedAnswer1Content" Height="70" TextWrapping="Wrap" Width="370" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="EditedAnswer1CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
 
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 2" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70"  x:Name="EditedAnswer2Content"  Width="370" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="EditedAnswer2CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 3" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70" Width="370"  x:Name="EditedAnswer3Content" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="EditedAnswer3CheckBox" >
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Width="410" Margin="5">
+                            <Label Content="Odpowiedź 4" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Height="70" Orientation="Horizontal" >
+                                <TextBox Height="70" Width="370"  x:Name="EditedAnswer4Content" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <CheckBox x:Name="EditedAnswer4CheckBox">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Margin="0,0,100,0">
+                            <Label  Content="Czas przezanczony na pytanie:" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                <TextBox x:Name="EditedQuestionTime" Width="150" PreviewTextInput="NumberValidationTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                </TextBox>
+                                <Label Foreground="#FF224BB6" FontSize="18">
+                                    sekund
+                                </Label>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="Kategoria" Foreground="#FF224BB6" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <ComboBox x:Name="EditedCategoryList"  HorizontalAlignment="Left" MinWidth="300" Margin="5,0,5,5" DataContext="{Binding Source={StaticResource Category}}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding CategoryName}"></Label>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Height="60"  FontSize="20" Margin="10,10,50,10" Click="EditQuestion">
+                            Zapisz Zmiany
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

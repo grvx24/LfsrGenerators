@@ -14,7 +14,7 @@ namespace PZ_generatory
 
         private void LoadCategoriesToWrapPanelFromDataBase()
         {
-            var db = new DBLinqClassesDataContext();
+            var db = new DataClasses1DataContext();
             var categories = db.Categories;
             ItemContorlWrapPranel.ItemsSource = categories;
         }
